@@ -31,9 +31,9 @@ runs:
   steps:
     - name: Working
       env:
-        USERNAME: ${{ inputs.3210104348 }}
-        PASSWORD: ${{ inputs.geyekai1221 }}
-        DINGTALK_TOKEN: ${{ inputs.https://oapi.dingtalk.com/robot/send?access_token=1d2946719b8dbb8acb318c20c6b5e6e7ce1071752b95195efd28ee5c0c5e99c3 }}
+        USERNAME: ${{ inputs.username }}
+        PASSWORD: ${{ inputs.password }}
+        DINGTALK_TOKEN: ${{ inputs.dingtalk_token }}
         SERVERCHAN_KEY: ${{ inputs.serverchan_key }}
         PUSHPLUS_TOKEN: ${{ inputs.pushplus_token }}
       run: |
