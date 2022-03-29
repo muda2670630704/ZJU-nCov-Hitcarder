@@ -29,15 +29,19 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Working
-      env:
-        USERNAME: ${{ inputs.username }}
-        PASSWORD: ${{ inputs.password }}
-        DINGTALK_TOKEN: ${{ inputs.dingtalk_token }}
-        SERVERCHAN_KEY: ${{ inputs.serverchan_key }}
-        PUSHPLUS_TOKEN: ${{ inputs.pushplus_token }}
-      run: |
-        cd ${{ github.action_path }}
-        pip install -r ./requirements.txt
-        python3 ./hitcarder.py
-      shell: bash
+- name: Checkout
+uses: actions/checkout@v2
+- name: 'Set up Python'
+uses: actions/setup-python@v2
+with:
+python-version: 3.9
+- name: 'Install requirements'
+run: pip3 install -r ./requirements.txt
+- name: Working
+env:
+USERNAME: ${{ secrets[matrix.username] }}
+PASSWORD: ${{ secrets[matrix.password] }}
+DINGTALK_TOKEN: ${{ secrets[matrix.dingtalk_token] }}
+run: |
+python3 ./hitcarder.py
+shell: bash
